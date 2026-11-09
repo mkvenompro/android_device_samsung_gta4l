@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Local manifest for building gta4l on Evolution X (branch cnb = Android 17).
+
+  Evolution X is LineageOS 24 based and maps vendor/lineage to
+  Evolution-X/vendor_evolution, so the stock lineage-24.0 device tree works.
+
+  Usage:
+      repo init -u https://github.com/Evolution-X/manifest -b cnb
+      mkdir -p .repo/local_manifests
+      cp <this file> .repo/local_manifests/gta4l.xml
+      repo sync -j8
+-->
+<manifest>
+  <remote name="gta4l-fork" fetch="https://github.com/mkvenompro" />
+  <remote name="lineage" fetch="https://github.com/LineageOS" />
+
+  <!-- Device trees (this branch) -->
+  <project path="device/samsung/gta4l" name="android_device_samsung_gta4l"
+           remote="gta4l-fork" revision="evolution-a17" />
+  <project path="device/samsung/gta4l-common" name="android_device_samsung_gta4l-common"
+           remote="gta4l-fork" revision="evolution-a17" />
+
+  <!-- Samsung hardware / kernel (same versions Evolution X uses) -->
+  <project path="hardware/samsung" name="android_hardware_samsung"
+           remote="lineage" revision="lineage-24.0" />
+  <project path="kernel/samsung/sm6115" name="android_kernel_samsung_sm6115"
+           remote="lineage" revision="lineage-24.0" />
+
+  <!--
+    Proprietary blobs. Extract them locally with extract-files.py, or point the
+    projects below at your own vendor repo:
+
+  <project path="vendor/samsung/gta4l" name="..." remote="..." revision="..." />
+  <project path="vendor/samsung/gta4l-common" name="..." remote="..." revision="..." />
+  -->
+</manifest>
