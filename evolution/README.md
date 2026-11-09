@@ -20,8 +20,11 @@ Evolution X is based on LineageOS 24 and maps `vendor/lineage` to
 
 - `AndroidProducts.mk`: added `COMMON_LUNCH_CHOICES`.
 - `evolution/local_manifest.xml`: repositories missing from the Evolution X
-  manifest (only `hardware/samsung` and `kernel/samsung/sm6115`, since both
-  device trees are already in this fork).
+  manifest (`hardware/samsung`, `kernel/samsung/sm6115` and
+  `hardware/dolby`, since both device trees are already in this fork).
+- `gta4l-common`: Dolby Atmos support (DAP, DVL, game, VQE and spatializer)
+  through `hardware/dolby`, including the audio effects/policy and media
+  codecs entries.
 - This README.
 
 ## Build
