@@ -14,6 +14,7 @@
 <manifest>
   <remote name="gta4l-fork" fetch="https://github.com/mkvenompro" />
   <remote name="lineage" fetch="https://github.com/LineageOS" />
+  <remote name="evo-devices" fetch="https://github.com/Evolution-X-Devices" />
 
   <!-- Device trees (this branch) -->
   <project path="device/samsung/gta4l" name="android_device_samsung_gta4l"
@@ -34,4 +35,8 @@
   <project path="vendor/samsung/gta4l" name="..." remote="..." revision="..." />
   <project path="vendor/samsung/gta4l-common" name="..." remote="..." revision="..." />
   -->
+
+  <!-- Dolby Atmos -->
+  <project path="hardware/dolby" name="hardware_dolby"
+           remote="evo-devices" revision="cnb" />
 </manifest>
