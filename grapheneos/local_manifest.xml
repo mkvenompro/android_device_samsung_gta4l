@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Local manifest for building this device tree on top of the GrapheneOS
+  "17" (Android 17) manifest.
+
+  Usage (after "repo init", before "repo sync"):
+
+      mkdir -p .repo/local_manifests
+      cp device/samsung/gta4l/grapheneos/local_manifest.xml .repo/local_manifests/gta4l.xml
+      repo sync -j8
+
+  Note: the device tree itself is synced from this fork, so it cannot be
+  copied from the tree before the first sync. Either put this file in
+  .repo/local_manifests manually, or run "repo sync" once with a minimal
+  version of it that only contains the two device projects.
+-->
+<manifest>
+  <remote name="gta4l-fork" fetch="https://github.com/mkvenompro" />
+  <remote name="lineage" fetch="https://github.com/LineageOS" />
+
+  <!-- Device trees (this branch) -->
+  <project path="device/samsung/gta4l" name="android_device_samsung_gta4l"
+           remote="gta4l-fork" revision="grapheneos-a17" />
+  <project path="device/samsung/gta4l-common" name="android_device_samsung_gta4l-common"
+           remote="gta4l-fork" revision="grapheneos-a17" />
+
+  <!-- Samsung hardware / kernel -->
+  <project path="hardware/samsung" name="android_hardware_samsung"
+           remote="lineage" revision="lineage-24.0" />
+  <project path="kernel/samsung/sm6115" name="android_kernel_samsung_sm6115"
+           remote="lineage" revision="lineage-24.0" />
+
+  <!-- Qualcomm CAF bits used by the device tree -->
+  <project path="hardware/qcom-caf/common" name="android_hardware_qcom-caf_common"
+           remote="lineage" revision="lineage-24.0">
+    <linkfile src="os_pickup_sepolicy_vndr.mk" dest="device/qcom/sepolicy_vndr/SEPolicy.mk" />
+  </project>
+  <project path="device/qcom/sepolicy_vndr/legacy-um" name="android_device_qcom_sepolicy_vndr"
+           remote="lineage" revision="lineage-24.0-legacy-um" />
+  <project path="device/lineage/sepolicy" name="android_device_lineage_sepolicy"
+           remote="lineage" revision="lineage-24.0" />
+  <project path="vendor/qcom/opensource/usb" name="android_vendor_qcom_opensource_usb"
+           remote="lineage" revision="lineage-24.0" />
+</manifest>
