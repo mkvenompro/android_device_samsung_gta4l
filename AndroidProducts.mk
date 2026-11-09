@@ -14,4 +14,10 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/aosp_gta4l.mk \
     $(LOCAL_DIR)/lineage_gta4l.mk
+
+COMMON_LUNCH_CHOICES := \
+    aosp_gta4l-cur-user \
+    aosp_gta4l-cur-userdebug \
+    lineage_gta4l-trunk_staging-userdebug
